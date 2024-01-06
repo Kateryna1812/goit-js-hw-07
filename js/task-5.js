@@ -13,3 +13,6 @@ function changeBackgroundColor() {
   body.style.backgroundColor = randomColor;
   colorSpan.textContent = randomColor;
 }
+
+const changeColorButton = document.querySelector('.change-color');
+    changeColorButton.addEventListener('click', changeBackgroundColor);

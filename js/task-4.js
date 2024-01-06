@@ -1,6 +1,6 @@
 const loginForm = document.getElementById('loginForm');
 
-    loginForm.addEventHearer('submit', handleFormSubmit);
+    loginForm.addEventListener('submit', handleFormSubmit);
 
     function handleFormSubmit(event) {
       event.preventDefault(); 
