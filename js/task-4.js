@@ -1,25 +1,34 @@
-const loginForm = document.getElementById('loginForm');
+const loginForm = document.querySelector(".login-form");
+const dataFields = document.querySelectorAll('.data-field');
 
-    loginForm.addEventListener('submit', handleFormSubmit);
+dataFields.forEach((field) => {
+  field.addEventListener('focus', () => {
+    field.style.outline = 'none';
+    field.style.borderColor = '#808080';
+  });
 
-    function handleFormSubmit(event) {
-      event.preventDefault(); 
+  field.addEventListener('blur', () => {
+    field.style.borderColor = '';
+  });
+});
 
-      const emailValue = loginForm.elements.email.value.trim();
-      const passwordValue = loginForm.elements.password.value.trim();
+loginForm.addEventListener("submit", function (event) {
+  event.preventDefault();
 
-    
-      if (!emailValue || !passwordValue) {
-        alert('All form fields must be filled in');
-        return;
-      }
+  const emailValue = this.elements.email.value.trim();
+  const passwordValue = this.elements.password.value.trim();
 
-      const formData = {
-        email: emailValue,
-        password: passwordValue
-      };
+  if (!emailValue || !passwordValue) {
+    alert("All form fields must be filled in");
+    return;
+  }
 
-      console.log(formData);
+  const formData = {
+    email: emailValue,
+    password: passwordValue,
+  };
 
-      loginForm.reset();
-    }
+  console.log(formData);
+
+  this.reset();
+});
